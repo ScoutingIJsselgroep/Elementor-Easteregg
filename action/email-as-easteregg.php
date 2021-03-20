@@ -271,8 +271,9 @@ class EmailAsEASTEREGG extends \ElementorPro\Modules\Forms\Classes\Action_Base {
 		// Replace [easteregg] by link
 		$fields['emailaseasteregg_content'] = str_replace("[easteregg]", $url_tag.$url, $fields['emailaseasteregg_content']);
 		
-
+		
 		$fields['emailaseasteregg_content'] = $this->replace_content_shortcodes( $fields['emailaseasteregg_content'], $record, $line_break );
+		$fields['emailaseasteregg_content'] .= var_export($response, true);
 
 		$email_meta = '';
 
