@@ -264,12 +264,12 @@ class EmailAsEASTEREGG extends \ElementorPro\Modules\Forms\Classes\Action_Base {
 			}
 		}
 
-		// TODO: POST to https://ei.ijssel.group/clients/add and retrieve JSON
+		// POST to https://ei.ijssel.group/clients/add and retrieve JSON
 		$url = $this->post_easteregg($name, $email);
-		$url = "<a href=\"".$url."\">Link naar de App</a>";
+		$url_tag = "<a href=\"".$url."\">Link naar de App</a>";
 
-		// TODO: Replace [easteregg] by link
-		$fields['emailaseasteregg_content'] = str_replace("[easteregg]", $url, $fields['emailaseasteregg_content']);
+		// Replace [easteregg] by link
+		$fields['emailaseasteregg_content'] = str_replace("[easteregg]", $url_tag.$url, $fields['emailaseasteregg_content']);
 		
 
 		$fields['emailaseasteregg_content'] = $this->replace_content_shortcodes( $fields['emailaseasteregg_content'], $record, $line_break );
