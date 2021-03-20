@@ -206,9 +206,7 @@ class EmailAsEASTEREGG extends \ElementorPro\Modules\Forms\Classes\Action_Base {
 		// do anything you want with your response
 		$response = json_decode($response);
 
-		$url = "https://ei.ijssel.group/start?code=".$response['code'];
-		
-		return $result;
+		return $response;
 	}
 
 	public function run( $record, $ajax_handler ) {
@@ -265,7 +263,9 @@ class EmailAsEASTEREGG extends \ElementorPro\Modules\Forms\Classes\Action_Base {
 		}
 
 		// POST to https://ei.ijssel.group/clients/add and retrieve JSON
-		$url = $this->post_easteregg($name, $email);
+		$response = $this->post_easteregg("test", $fields["emailaseasteregg_to"]);
+		$url = "https://ei.ijssel.group/start?code=".$response['code'];
+
 		$url_tag = "<a href=\"".$url."\">Link naar de App</a>";
 
 		// Replace [easteregg] by link
